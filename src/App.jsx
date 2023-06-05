@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+import Button from "./components/Button";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ function App({ routes }) {
   return (
     <>
       <Home></Home>
+      <Button />
     </>
   );
 }
