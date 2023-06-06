@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "./Button";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Cart = () => {
   return (
@@ -11,7 +13,8 @@ const Cart = () => {
         <div className="p-4 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <img
+              <LazyLoadImage
+                effect="blur"
                 className="w-20 h-20"
                 src="/src/assets/img/asus-zenbook-flip-s.jpg"
                 alt="product image"
