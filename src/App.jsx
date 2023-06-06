@@ -1,24 +1,27 @@
-import { useState } from "react";
-import "./App.css";
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-import Header from "./components/Header";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Button from "./components/Button";
-import Cart from "./components/Cart";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App({ children }) {
+import "./App.css";
+import Header from "./components/Header";
+const Login = lazy(() => import("./pages/Login"));
+const Home = lazy(() => import("./pages/Home"));
+const Register = lazy(() => import("./pages/Register"));
+const Button = lazy(() => import("./components/Button"));
+const Cart = lazy(() => import("./components/Cart"));
+
+function App() {
   return (
-    <>
-      <Header />
-      <div>{children}</div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="product" element={<Register />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
