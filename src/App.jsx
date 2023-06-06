@@ -13,23 +13,11 @@ import Register from "./pages/Register";
 import Button from "./components/Button";
 import Cart from "./components/Cart";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Header />}>
-      <Route index element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-    </Route>
-  )
-);
-
-function App({ routes }) {
-  const [count, setCount] = useState(0);
-
+function App({ children }) {
   return (
     <>
-      <Home></Home>
-      <Button />
+      <Header />
+      <div>{children}</div>
     </>
   );
 }
