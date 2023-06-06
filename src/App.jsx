@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Button from "./components/Button";
+import Cart from "./components/Cart";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
