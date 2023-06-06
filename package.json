@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run start:vite\" \"npm run start:json-server\"",
+    "start:vite": "vite",
+    "start:json-server": "json-server --watch db.json --port 3001",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -12,13 +14,14 @@
   "dependencies": {
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
+    "json-server": "^0.17.3",
     "localforage": "^1.10.0",
     "lucide-react": "^0.236.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "sort-by": "^1.2.0",
+    "sort-by": "^0.0.2",
     "tailwind-merge": "^1.13.0",
     "tailwindcss-animate": "^1.0.5"
   },
@@ -27,6 +30,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
     "autoprefixer": "^10.4.14",
+    "concurrently": "^8.1.0",
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
