@@ -45,7 +45,7 @@ const Header = () => {
           </Link>
           <Link
             to="login"
-            className="text-gray-800 hover:text-orange-400 transition-all duration-200 "
+            className="text-gray-800 hover:text-orange-400 transition-all duration-300 "
           >
             Login
           </Link>
