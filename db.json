@@ -3,7 +3,7 @@
     {
         "id": "0",
         "productName": "Huawei MateBook X Pro",
-        "image": "./src/assets/img/huawei-matebook-pro.jpg",
+        "image": "/huawei-matebook-pro.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "8GB",
         "storage": "512 GB SSD",
@@ -14,7 +14,7 @@
     {
         "id": "1",
         "productName": "Apple Macbook Pro 2018",
-        "image": "./src/assets/img/macbook-pro-15.jpg",
+        "image": "/macbook-pro-15.jpg",
         "cpu": "6-core Intel i7, 8th generation",
         "ram": "16GB",
         "storage": "1TB GB SSD",
@@ -25,7 +25,7 @@
     {
         "id": "2",
         "productName": "Dell XPS 13",
-        "image": "./src/assets/img/dell-xps-13.png",
+        "image": "/dell-xps-13.png",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "512 GB SSD",
@@ -36,7 +36,7 @@
     {
         "id": "3",
         "productName": "Asus ZenBook Flip S",
-        "image": "./src/assets/img/asus-zenbook-flip-s.jpg",
+        "image": "/asus-zenbook-flip-s.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "512 GB SSD",
@@ -47,7 +47,7 @@
     {
         "id": "4",
         "productName": "Samsung Notebook 9",
-        "image": "./src/assets/img/samsung-notebook-9.jpg",
+        "image": "/samsung-notebook-9.jpg",
         "cpu": "Intel Core i7, 8th generation",
         "ram": "16GB",
         "storage": "256 GB SSD",

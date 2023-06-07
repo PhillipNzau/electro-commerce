@@ -28,7 +28,7 @@ const SelectedProduct = () => {
         <LazyLoadImage
           effect="blur"
           className="w-full h-full col-span-1 rounded-md"
-          src="/src/assets/img/asus-zenbook-flip-s.jpg"
+          src="/asus-zenbook-flip-s.jpg"
           alt="product image"
         />
 
