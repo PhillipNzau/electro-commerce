@@ -16,7 +16,7 @@ const Cart = () => {
               <LazyLoadImage
                 effect="blur"
                 className="w-20 h-20"
-                src="/src/assets/img/asus-zenbook-flip-s.jpg"
+                src="/asus-zenbook-flip-s.jpg"
                 alt="product image"
               />
               <p>Product Name</p>
