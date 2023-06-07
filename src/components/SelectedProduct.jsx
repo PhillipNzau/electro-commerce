@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Button from "./Button";
 
 const SelectedProduct = () => {
-  const cartSvg = {
+  const CartSvg = {
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const SelectedProduct = () => {
             <span>Brand: Brand name</span>
           </p>
           <p>Rating: {product.rating}</p>
-          <Button svg={cartSvg.icon} text="Add to cart" />
+          <Button svg={CartSvg.icon} text="Add to cart" />
         </div>
       </div>
       <div className="bg-gray-50 min-h-10 h-10 min-w-full "></div>
