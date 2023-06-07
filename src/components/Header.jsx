@@ -25,7 +25,7 @@ const Header = () => {
           </Link>
           <Link
             to="cart"
-            className="text-gray-700 hover:text-orange-400 transition-all duration-200 flex items-center gap-1"
+            className="text-gray-800 hover:text-orange-400 transition-all duration-200 flex items-center gap-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Header = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-7 h-7"
             >
               <path
                 strokeLinecap="round"
@@ -45,7 +45,7 @@ const Header = () => {
           </Link>
           <Link
             to="login"
-            className="text-gray-800 hover:text-orange-400 transition-all duration-200 "
+            className="text-gray-800 hover:text-orange-400 transition-all duration-300 "
           >
             Login
           </Link>
