@@ -1,36 +1,29 @@
-import { useState } from "react";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./App.css";
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
 import Header from "./components/Header";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Button from "./components/Button";
-import Cart from "./components/Cart";
+const Login = lazy(() => import("./pages/Login"));
+const Home = lazy(() => import("./pages/Home"));
+const Register = lazy(() => import("./pages/Register"));
+const Button = lazy(() => import("./components/Button"));
+const Cart = lazy(() => import("./components/Cart"));
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Header />}>
-      <Route index element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-    </Route>
-  )
-);
-
-function App({ routes }) {
-  const [count, setCount] = useState(0);
-
+function App() {
   return (
-    <>
-      <Home></Home>
-      <Button />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="products" element={<Register />}>
+            <Route path=":prodId" element={<Register />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
