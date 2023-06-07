@@ -3,12 +3,17 @@ import { Link, Outlet } from "react-router-dom";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Button from "../components/Button";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+  const handleOnClick = (id) => {
+    navigate(`/${id}`, { state: { id } });
+  };
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
@@ -29,9 +34,9 @@ const Home = () => {
         <h1 className="text-3xl font-bold mb-4">Products</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
-            <Link
+            <div
               key={product.id}
-              to={`/${product.id}`}
+              onClick={() => handleOnClick(product.id)}
               className="bg-white p-6 shadow-md rounded-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:cursor-pointer"
             >
               <LazyLoadImage
@@ -54,7 +59,7 @@ const Home = () => {
                   onClick={() => addToCart(product)}
                 />
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

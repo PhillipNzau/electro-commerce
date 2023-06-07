@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import Button from "./Button";
 
 const SelectedProduct = () => {
@@ -22,22 +24,56 @@ const SelectedProduct = () => {
       </svg>
     ),
   };
+
+  const navigate = useNavigate();
+  const { state: routerState } = useLocation();
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/products/${routerState.id}`)
+      .then((response) => response.json())
+      .then((data) => setProduct(data))
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
+
   return (
     <>
+      <div
+        className="p-4 w-44 mx-4 border border-transparent  flex justify-center items-center gap-4 transition-all duration-300 group hover:border-gray-300 hover:cursor-pointer"
+        onClick={() => navigate(-1)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 transition-all duration-300 group-hover:w-8 "
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+          />
+        </svg>
+        Back
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 py-6">
         <LazyLoadImage
           effect="blur"
           className="w-full h-full col-span-1 rounded-md"
-          src="/asus-zenbook-flip-s.jpg"
+          src={product.image}
           alt="product image"
         />
 
         <div className="space-y-4 col-span-2">
-          <p>Product name</p>
+          <p>{product.productName}</p>
           <p>
             <span>Brand: Brand name</span>
           </p>
-          <p>Rating: </p>
+          <p>Rating: {product.rating}</p>
           <Button svg={cartSvg.icon} text="Add to cart" />
         </div>
       </div>
@@ -48,7 +84,25 @@ const SelectedProduct = () => {
         </div>
 
         <div className="p-4 space-y-4">
-          <p>Description</p>
+          <p>{product.description}</p>
+
+          <div className="space-y-1">
+            <p className="text-lg">Cpu</p>
+            <p>{product.cpu}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-lg">Ram</p>
+            <p>{product.ram}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-lg">Storage</p>
+            <p>{product.storage}</p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-lg">Screen</p>
+            <p>{product.screen}</p>
+          </div>
         </div>
       </div>
     </>
