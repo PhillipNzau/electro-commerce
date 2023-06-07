@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button";
 
-const SearchComponent = ({ onSearch, onChange, searchQuery }) => {
+const SearchComponent = ({ onChange, searchQuery }) => {
   // const handleSearchChange = (event) => {
   //   setSearchQuery(event.target.value);
   //   onSearch(event.target.value);

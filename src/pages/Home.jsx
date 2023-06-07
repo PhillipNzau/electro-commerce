@@ -6,12 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../components/Button";
 
-const Home = ({ onClick, searchQuery, products }) => {
+const Home = ({ onClick, products }) => {
   const navigate = useNavigate();
 
   const handleOnClick = (id) => {
     navigate(`/${id}`, { state: { id } });
-    console.log("selected id home", id);
   };
 
   return (
@@ -22,7 +21,10 @@ const Home = ({ onClick, searchQuery, products }) => {
           {products.map((product) => (
             <div
               key={product.id}
-              onClick={() => handleOnClick(product.id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOnClick(product.id);
+              }}
               className="bg-white p-6 shadow-md rounded-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:cursor-pointer"
             >
               <LazyLoadImage
@@ -39,11 +41,11 @@ const Home = ({ onClick, searchQuery, products }) => {
                   {product.description}
                 </p>
                 <p className="text-lg font-semibold mt-4">${product.price}</p>
-                <Button
+                {/* <Button
                   text="Add to Cart"
                   width={150}
                   onClick={() => onClick(product.id)}
-                />
+                /> */}
               </div>
             </div>
           ))}

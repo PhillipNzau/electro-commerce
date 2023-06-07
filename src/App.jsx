@@ -16,11 +16,12 @@ function App() {
 
   const [cartProducts, setCartProducts] = useState([]);
 
-  const handleAddToCart = (id) => {
-    setProduct(id);
+  const handleAddToCart = (productId) => {
+    console.log("chikaa", productId);
+    setProduct(productId);
     console.log("set product id app", product);
 
-    setCartProducts([...cartProducts, id]);
+    setCartProducts((prevCartProducts) => [...prevCartProducts, product]);
 
     console.log("set cart product id app", cartProducts);
   };
