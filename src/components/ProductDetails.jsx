@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import Button from "./Button";
 
-const SelectedProduct = () => {
+const ProductDetails = () => {
   const CartSvg = {
     icon: (
       <svg
@@ -109,4 +109,4 @@ const SelectedProduct = () => {
   );
 };
 
-export default SelectedProduct;
+export default ProductDetails;
