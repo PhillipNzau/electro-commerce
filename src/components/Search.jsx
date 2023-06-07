@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "./Button";
 
 const SearchComponent = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -7,13 +8,16 @@ const SearchComponent = ({ onSearch }) => {
     onSearch(event.target.value);
   };
   return (
-    <input
-      type="text"
-      value={searchQuery}
-      onChange={handleSearchChange}
-      placeholder="Search products"
-      className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-    />
+    <div className="flex items-center gap-2">
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        placeholder="Search products"
+        className="w-full p-4 border rounded-md focus:outline-none "
+      />
+      <Button text="search" width={150} />
+    </div>
   );
 };
 export default SearchComponent;

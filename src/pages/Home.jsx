@@ -1,5 +1,8 @@
-import React, { useState, useEffect} from "react";
-import Button from '../components/Button';
+import React, { useState, useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+import Button from "../components/Button";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -20,16 +23,16 @@ const Home = () => {
 
   return (
     <>
-    <div>Home</div>
-    <div className="container mx-auto p-4">
+      <div className=" mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4">Products</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white p-6 shadow-md rounded-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              className="bg-white p-6 shadow-md rounded-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:cursor-pointer"
             >
-              <img
+              <LazyLoadImage
+                effect="blur"
                 src={product.image}
                 alt={product.productName}
                 className="w-full h-48 object-cover mb-4 rounded-md"
@@ -51,11 +54,9 @@ const Home = () => {
             </div>
           ))}
         </div>
-
-        
       </div>
     </>
-  )
+  );
 };
 
 export default Home;
