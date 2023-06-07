@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header";
+import SelectedProduct from "./components/SelectedProduct";
 const Login = lazy(() => import("./pages/Login"));
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
@@ -15,12 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route path="/" element={<Home />} />
+          <Route path=":prodId" element={<SelectedProduct />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="cart" element={<Cart />} />
-          <Route path="products" element={<Register />}>
-            <Route path=":prodId" element={<Register />} />
-          </Route>
         </Route>
       </Routes>
     </Router>
