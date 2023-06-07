@@ -66,7 +66,7 @@ const Cart = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 25 25"
                   strokeWidth={1.5}
                   stroke="currentColor"
                   className="w-8 h-8"
@@ -91,7 +91,7 @@ const Cart = () => {
             Subtotal <span className="text-xl">KSh 1.460</span>
           </p>
         </div>
-        <div className="mx-6">
+        <div className="mx-7">
           <Button text="CHECKOUT (KSH 1,460)" />
         </div>
       </div>
