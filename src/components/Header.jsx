@@ -2,14 +2,19 @@ import React, { lazy, Suspense } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Loading from "./Loading";
 import SearchComponent from "./Search";
+import logo from "../Logo.jpg";
 
 const Header = () => {
   return (
     <div className=" bg-gray-50 py-4 min-h-screen h-max">
       <nav className="md:w-1/2 mx-auto flex items-center justify-between px-4 py-6 bg-white border-b gap-4">
+        <img src={src/assets/logo.jpg} alt="Logo"/>
+
+        
         <Link to="/" className="font-bold text-2xl">
-          Electro-Commerce
+          Fox Tag
         </Link>
+         
         <SearchComponent />
         <div className="flex items-center gap-6 text-xl ">
           <Link
