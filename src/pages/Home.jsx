@@ -6,27 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../components/Button";
 
-const Home = ({ onClick }) => {
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+const Home = ({ onClick, searchQuery, products }) => {
   const navigate = useNavigate();
 
   const handleOnClick = (id) => {
     navigate(`/${id}`, { state: { id } });
     console.log("selected id home", id);
-  };
-
-  useEffect(() => {
-    fetch("http://localhost:3001/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
-  }, []);
-
-  const addToCart = (product) => {
-    setCart([...cart, product]);
   };
 
   return (

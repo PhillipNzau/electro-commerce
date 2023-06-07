@@ -11,6 +11,9 @@ const Cart = lazy(() => import("./components/Cart"));
 
 function App() {
   const [product, setProduct] = useState();
+  const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [cartProducts, setCartProducts] = useState([]);
 
   const handleAddToCart = (id) => {
@@ -21,12 +24,36 @@ function App() {
 
     console.log("set cart product id app", cartProducts);
   };
+  useEffect(() => {
+    fetch("http://localhost:3001/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
+
+  // Handle search
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Actual filter
+  const filteredData = products.filter((item) =>
+    item.productName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Header />}>
-          <Route path="/" element={<Home onClick={handleAddToCart} />} />
+        <Route
+          path="/"
+          element={<Header onChange={handleSearch} searchQuery={searchQuery} />}
+        >
+          <Route
+            path="/"
+            element={<Home onClick={handleAddToCart} products={filteredData} />}
+          />
           <Route
             path=":prodId"
             element={<SelectedProduct onClick={handleAddToCart} />}

@@ -3,14 +3,14 @@ import { Link, Outlet } from "react-router-dom";
 import Loading from "./Loading";
 import SearchComponent from "./Search";
 
-const Header = () => {
+const Header = ({ searchQuery, onChange }) => {
   return (
     <div className=" bg-gray-50 py-4 min-h-screen h-max">
       <nav className="md:w-1/2 mx-auto flex items-center justify-between px-4 py-6 bg-white border-b gap-4">
         <Link to="/" className="font-bold text-2xl">
           Electro-Commerce
         </Link>
-        <SearchComponent />
+        <SearchComponent onChange={onChange} searchQuery={searchQuery} />
         <div className="flex items-center gap-6 text-xl ">
           <Link
             to="/"
