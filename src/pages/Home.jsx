@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../components/Button";
 
-const Home = () => {
+const Home = ({ onClick }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
+
   const handleOnClick = (id) => {
     navigate(`/${id}`, { state: { id } });
+    console.log("selected id home", id);
   };
 
   useEffect(() => {
@@ -56,7 +57,7 @@ const Home = () => {
                 <Button
                   text="Add to Cart"
                   width={150}
-                  onClick={() => addToCart(product)}
+                  onClick={() => onClick(product.id)}
                 />
               </div>
             </div>
