@@ -12,7 +12,7 @@ const Header = ({ searchQuery, onChange, productCount }) => {
     <div className=" bg-gray-50 py-4 min-h-screen h-max">
       <nav className="md:w-[60%] mx-auto flex items-center justify-center md:justify-between flex-wrap px-4 py-6 bg-white border-b gap-4">
         <Link to="/" className="font-bold text-2xl">
-          Electro-Commerce
+          Fox- Tag
         </Link>
         <SearchComponent onChange={onChange} searchQuery={searchQuery} />
         <div className="flex items-center gap-6 text-xl ">
