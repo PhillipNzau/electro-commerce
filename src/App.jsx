@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header";
-import SelectedProduct from "./components/ProductDetails";
-import ProductDetails from "./components/ProductDetails";
+import SelectedProduct from "./components/SelectedProduct";
+import ProductDetails from "./components/SelectedProduct";
 const Login = lazy(() => import("./pages/Login"));
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
