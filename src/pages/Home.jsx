@@ -21,32 +21,34 @@ const Home = ({ onClick, products }) => {
           {products.map((product) => (
             <div
               key={product.id}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleOnClick(product.id);
-              }}
               className="bg-white p-6 shadow-md rounded-md transition duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:cursor-pointer"
             >
-              <LazyLoadImage
-                effect="blur"
-                src={product.image}
-                alt={product.productName}
-                className="w-full h-48 object-cover mb-4 rounded-md"
-              />
-              <div className="text-gray-800">
-                <h2 className="text-lg font-semibold mb-2">
-                  {product.productName}
-                </h2>
-                <p className="text-gray-600 line-clamp-3">
-                  {product.description}
-                </p>
-                <p className="text-lg font-semibold mt-4">${product.price}</p>
-                {/* <Button
-                  text="Add to Cart"
-                  width={150}
-                  onClick={() => onClick(product.id)}
-                /> */}
+              <div
+                onClick={() => {
+                  handleOnClick(product.id);
+                }}
+              >
+                <LazyLoadImage
+                  effect="blur"
+                  src={product.image}
+                  alt={product.productName}
+                  className="w-full h-48 object-cover mb-4 rounded-md"
+                />
+                <div className="text-gray-800">
+                  <h2 className="text-lg font-semibold mb-2">
+                    {product.productName}
+                  </h2>
+                  <p className="text-gray-600 line-clamp-3">
+                    {product.description}
+                  </p>
+                  <p className="text-lg font-semibold mt-4">${product.price}</p>
+                </div>
               </div>
+              <Button
+                text="Add to Cart"
+                width={150}
+                onClick={() => onClick(product.id)}
+              />
             </div>
           ))}
         </div>

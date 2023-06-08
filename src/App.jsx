@@ -10,21 +10,29 @@ const Register = lazy(() => import("./pages/Register"));
 const Cart = lazy(() => import("./components/Cart"));
 
 function App() {
-  const [product, setProduct] = useState();
-  const [products, setProducts] = useState([]);
+  const [isInitialRender, setIsInitialRender] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [product, setProduct] = useState();
   const [cartProducts, setCartProducts] = useState([]);
 
-  const handleAddToCart = (productId) => {
-    console.log("chikaa", productId);
-    setProduct(productId);
-    console.log("set product id app", product);
+  const [products, setProducts] = useState([]);
 
-    setCartProducts((prevCartProducts) => [...prevCartProducts, product]);
+  const handleAddToCart = (productId) => {
+    setProduct(productId);
+
+    setCartProducts((prevCartProducts) => [...prevCartProducts, productId]);
+  };
+
+  useEffect(() => {
+    if (isInitialRender) {
+      setIsInitialRender(false);
+      return;
+    }
 
     console.log("set cart product id app", cartProducts);
-  };
+  }, [product, cartProducts]);
+
   useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((response) => response.json())
@@ -61,7 +69,7 @@ function App() {
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="cart" element={<Cart />} />
+          <Route path="cart" element={<Cart productsId={cartProducts} />} />
         </Route>
       </Routes>
     </Router>

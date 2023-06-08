@@ -47,7 +47,7 @@ const Header = ({ searchQuery, onChange }) => {
         </div>
       </nav>
 
-      <div className="md:w-1/2 mx-auto py-6 bg-white">
+      <div className="md:w-1/2 h-[85vh] overflow-hidden overflow-y-scroll  mx-auto py-6 bg-white">
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>

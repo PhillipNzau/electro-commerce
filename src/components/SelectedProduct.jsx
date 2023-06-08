@@ -80,7 +80,6 @@ const SelectedProduct = ({ onClick }) => {
               svg={cartSvg.icon}
               text="Add to cart"
               onClick={() => {
-                setAdded(true);
                 onClick(product.id);
               }}
             />
