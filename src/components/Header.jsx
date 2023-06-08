@@ -10,7 +10,7 @@ const Header = ({ searchQuery, onChange, productCount }) => {
   };
   return (
     <div className=" bg-gray-50 py-4 min-h-screen h-max">
-      <nav className="md:w-1/2 mx-auto flex items-center justify-between px-4 py-6 bg-white border-b gap-4">
+      <nav className="md:w-[60%] mx-auto flex items-center justify-center md:justify-between flex-wrap px-4 py-6 bg-white border-b gap-4">
         <Link to="/" className="font-bold text-2xl">
           Electro-Commerce
         </Link>
@@ -67,7 +67,7 @@ const Header = ({ searchQuery, onChange, productCount }) => {
         </div>
       </nav>
 
-      <div className="md:w-1/2 h-[85vh] overflow-hidden overflow-y-scroll  mx-auto py-6 bg-white">
+      <div className="md:w-[60%] h-[85vh] overflow-hidden overflow-y-scroll  mx-auto py-6 bg-white">
         <Suspense fallback={<Loading />}>
           <Outlet />
         </Suspense>
