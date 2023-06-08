@@ -1,4 +1,5 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -6,10 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 import Button from '../components/Button';
 
-const Home = ({ onClick}) => {
-  const navigate = useNavigate();
+const Home = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
+  const handleOnClick = (id) => {
+    navigate(`/${id}`, { state: { id } });
+  };
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
@@ -23,10 +27,6 @@ const Home = ({ onClick}) => {
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
-  const handleOnClick = (id) => {
-    navigate(`/${id}`, { state: { id } });
-  };
-
 
   return (
     <>
