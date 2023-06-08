@@ -20,8 +20,9 @@ function App() {
 
   const handleAddToCart = (productId) => {
     setProduct(productId);
-
-    setCartProducts((prevCartProducts) => [...prevCartProducts, productId]);
+    if (!cartProducts.some((existingItem) => existingItem === productId)) {
+      setCartProducts((prevCartProducts) => [...prevCartProducts, productId]);
+    }
   };
 
   useEffect(() => {
@@ -29,8 +30,6 @@ function App() {
       setIsInitialRender(false);
       return;
     }
-
-    console.log("set cart product id app", cartProducts);
   }, [product, cartProducts]);
 
   useEffect(() => {
@@ -52,12 +51,22 @@ function App() {
     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const removeItemById = (id) => {
+    setCartProducts((prevArray) => prevArray.filter((item) => item !== id));
+  };
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
-          element={<Header onChange={handleSearch} searchQuery={searchQuery} />}
+          element={
+            <Header
+              onChange={handleSearch}
+              searchQuery={searchQuery}
+              productCount={cartProducts.length}
+            />
+          }
         >
           <Route
             path="/"
@@ -69,7 +78,12 @@ function App() {
           />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="cart" element={<Cart productsId={cartProducts} />} />
+          <Route
+            path="cart"
+            element={
+              <Cart productsId={cartProducts} onClick={removeItemById} />
+            }
+          />
         </Route>
       </Routes>
     </Router>

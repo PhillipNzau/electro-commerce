@@ -5,7 +5,9 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const Cart = ({ productsId }) => {
+const Cart = ({ productsId, onClick }) => {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -25,8 +27,6 @@ const Cart = ({ productsId }) => {
     return array.filter((item) => numericIds.includes(item.id));
   };
   const filteredArray = filterArrayByIds(products, productsId);
-
-  const navigate = useNavigate();
 
   return (
     <>
@@ -57,7 +57,7 @@ const Cart = ({ productsId }) => {
         >
           <div className="col-span-1 md:col-span-7 bg-white rounded-md shadow-sm py-4 border ">
             <div className="border-b">
-              <p className="p-2">Cart({productsId.length})</p>
+              <p className="p-2">Cart Item</p>
             </div>
             <div className="p-4 space-y-4">
               <div className="flex items-center justify-between">
@@ -73,7 +73,10 @@ const Cart = ({ productsId }) => {
                 <p>KSh {product.price}</p>
               </div>
               <div className="flex items-center   justify-between">
-                <p className="flex items-center gap-2 text-orange-400 transition duration-300 hover:text-orange-500 hover:cursor-pointer ">
+                <p
+                  className="flex items-center gap-2 text-orange-400 transition duration-300 hover:text-orange-500 hover:cursor-pointer"
+                  onClick={() => onClick(product.id)}
+                >
                   <span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
