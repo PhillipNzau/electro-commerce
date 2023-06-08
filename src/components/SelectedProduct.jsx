@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import Button from "./Button";
 
-const SelectedProduct = () => {
+const SelectedProduct = ({ onClick }) => {
   const cartSvg = {
     icon: (
       <svg
@@ -28,6 +28,7 @@ const SelectedProduct = () => {
   const navigate = useNavigate();
   const { state: routerState } = useLocation();
   const [product, setProduct] = useState([]);
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:3001/products/${routerState.id}`)
@@ -74,7 +75,16 @@ const SelectedProduct = () => {
             <span>Brand: Brand name</span>
           </p>
           <p>Rating: {product.rating}</p>
-          <Button svg={cartSvg.icon} text="Add to cart" />
+          {added === false && (
+            <Button
+              svg={cartSvg.icon}
+              text="Add to cart"
+              onClick={() => {
+                setAdded(true);
+                onClick(product.id);
+              }}
+            />
+          )}
         </div>
       </div>
       <div className="bg-gray-50 min-h-10 h-10 min-w-full "></div>
