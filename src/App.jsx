@@ -8,8 +8,13 @@ const Login = lazy(() => import("./pages/Login"));
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Cart = lazy(() => import("./components/Cart"));
+import.meta.env.VITE_DEPLOYMENT;
 
 function App() {
+  let apiUrl = "http://localhost:3001/products";
+  if (import.meta.env.VITE_DEPLOYMENT === "true") {
+    apiUrl = "https://products-api-virid.vercel.app/api/products";
+  }
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -33,7 +38,7 @@ function App() {
   }, [product, cartProducts]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/products")
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => {
