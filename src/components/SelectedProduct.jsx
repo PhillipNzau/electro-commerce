@@ -50,7 +50,7 @@ const SelectedProduct = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.6}
           stroke="currentColor"
-          className="w-6 h-6 transition-all duration-300 group-hover:w-8 "
+          className="w-6 h-6 transition-all duration-320 group-hover:w-8 "
         >
           <route
             strokeLinecap="round"
