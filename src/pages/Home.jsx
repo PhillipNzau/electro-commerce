@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
   const handleOnClick = (id) => {
     navigate(`/${id}`, { state: { id } });
-  };
+  }
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
