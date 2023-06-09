@@ -22,7 +22,7 @@ const Home = () => {
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
-  }, [])
+  }, []);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
