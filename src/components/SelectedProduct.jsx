@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import.meta.env.VITE_DEPLOYMENT;
 
 import Button from "./Button";
 
 const SelectedProduct = ({ onClick }) => {
+  let apiUrl = "http://localhost:3001/products";
+  if (import.meta.env.VITE_DEPLOYMENT === "true") {
+    apiUrl = "https://products-api-virid.vercel.app/api/products";
+  }
   const cartSvg = {
     icon: (
       <svg
@@ -31,7 +36,7 @@ const SelectedProduct = ({ onClick }) => {
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/products/${routerState.id}`)
+    fetch(`${apiUrl}/${routerState.id}`)
       .then((response) => response.json())
       .then((data) => setProduct(data))
       .catch((error) => {

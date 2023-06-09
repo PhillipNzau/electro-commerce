@@ -5,15 +5,20 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import CartItem from "./CartItem";
+import.meta.env.VITE_DEPLOYMENT;
 
 const Cart = ({ productsId, onClick }) => {
+  let apiUrl = "http://localhost:3001/products";
+  if (import.meta.env.VITE_DEPLOYMENT === "true") {
+    apiUrl = "https://products-api-virid.vercel.app/api/products";
+  }
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
   const [productsPrice, setProductsPrice] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/products")
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
