@@ -26,7 +26,7 @@ const Home = () => {
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-  }
+  };
 
   return (
     <>
