@@ -25,8 +25,8 @@ const Home = () => {
   }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, product])
-  };
+    setCart([...cart, product]);
+  }
 
   return (
     <>
