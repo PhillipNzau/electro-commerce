@@ -21,7 +21,7 @@ const Home = () => {
       .then((data) => setProducts(data))
       .catch((error) => {
         console.error("Error fetching products:", error);
-      });
+      })
   }, []);
 
   const addToCart = (product) => {
