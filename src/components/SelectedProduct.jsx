@@ -27,12 +27,12 @@ const SelectedProduct = () => {
 
   const navigate = useNavigate();
   const { state: routeState } = useLocation();
-  const [product, setProduct] = useState([]);
+  const [product, setProducts] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3001/products/${routeState.id}`)
       .then((response) => response.json())
-      .then((data) => setProduct(data))
+      .then((data) => setProducts(data))
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
