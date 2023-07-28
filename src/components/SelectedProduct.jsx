@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import.meta.env.VITE_DEPLOYMENT;
 
 import Button from "./Button";
 
 const SelectedProduct = ({ onClick }) => {
-  let apiUrl = "http://localhost:3001/products";
-  if (import.meta.env.VITE_DEPLOYMENT === "true") {
-    apiUrl = "https://products-api-virid.vercel.app/api/products";
-  }
   const cartSvg = {
     icon: (
       <svg
@@ -33,12 +28,20 @@ const SelectedProduct = ({ onClick }) => {
   const navigate = useNavigate();
   const { state: routerState } = useLocation();
   const [product, setProduct] = useState([]);
+  const [brand, setBrand] = useState([]);
+  const [category, setCategory] = useState([]);
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
-    fetch(`${apiUrl}/${routerState.id}`)
+    fetch(`http://localhost:9292/products/${routerState.id}`)
       .then((response) => response.json())
-      .then((data) => setProduct(data))
+      .then((data) => {
+        let new_data = data[0];
+        console.log("pr", new_data);
+        setProduct(new_data.product);
+        setBrand(new_data.brand);
+        setCategory(new_data.category);
+      })
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
@@ -70,14 +73,14 @@ const SelectedProduct = ({ onClick }) => {
         <LazyLoadImage
           effect="blur"
           className="w-full h-full col-span-1 rounded-md"
-          src={product.image}
+          src={product.img}
           alt="product image"
         />
 
         <div className="space-y-4 col-span-2">
-          <p>{product.productName}</p>
+          <p>{product.name}</p>
           <p>
-            <span>Brand: Brand name</span>
+            <span>Brand: {brand.name} </span>
           </p>
           <p>Rating: {product.rating}</p>
           {added === false && (
